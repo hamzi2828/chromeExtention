@@ -1,0 +1,33 @@
+{
+    "manifest_version": 3,
+    "name": "Meeting Audio Transcriber",
+    "description": "Captures audio from Google Meet and Zoom meetings",
+    "version": "1.0",
+    "permissions": [
+      "tabs",          
+      "tabCapture",    
+      "activeTab",    
+      "storage"       
+    ],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "host_permissions": [
+      "https://meet.google.com/*",
+      "https://*.zoom.us/*"
+    ],
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": "icon.png"
+    },
+    "content_scripts": [
+      {
+        "matches": [
+          "https://meet.google.com/*",
+          "https://*.zoom.us/*"
+        ],
+        "js": ["content.js"]
+      }
+    ]
+  }
+  
